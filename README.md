@@ -1,22 +1,22 @@
 # MSc-Project
 
-Proposal:  
-Proposal  
-Literature Research  
+### Proposal:  
+1. Proposal  
+2. Literature Research  
           
-Related Work:  
-Text Analysis (5)  
-Encryption (0)  
-index (To quick memory)  
+### Related Work:  
+1. Text Analysis (5 papers)  
+2. Encryption (0)  
+3. index (To quick memory)  
               
-charts:  
-Prototype of webpage  
-Detect sensitive information mechanism (not complete)  
+### charts:  
+1. Prototype of webpage  
+2. Detect sensitive information mechanism (not complete)  
           
-project:  
-Crawler code for Maimai (python)  
-Avoid copy (html)  
-Watermarks (javascript)  
+### project:  
+1. Crawler code for Maimai (python)  
+2. Avoid copy (html)  
+3. Watermarks (javascript)  
          
 
 
