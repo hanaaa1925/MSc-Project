@@ -1,22 +1,24 @@
 # MSc-Project
 
-### Proposal:  
+### Thesis Proposal:  
 1. Proposal  
 2. Literature Research  
           
 ### Related Work:  
-1. Text Analysis (5 papers)  
-2. Encryption (0)  
+1. Text Analysis  
+2. Encryption  
 3. index (To quick memory)  
-              
-### charts:  
-1. Prototype of webpage  
-2. Detect sensitive information mechanism (not complete)  
+4. charts:  
+   i) Prototype of webpage  
+   ii) Detect sensitive information mechanism  
           
-### project:  
+### Source Code:  
 1. Crawler code for Maimai (python)  
 2. Avoid copy (html)  
 3. Watermarks (javascript)  
+
+### Thesis Report  
+
          
 
 
