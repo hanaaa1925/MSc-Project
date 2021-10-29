@@ -95,7 +95,7 @@
                         email: _this.registerForm.email,
                     }).then((response) => {
                         if (response.data.length) {
-                            _this.emailMsg = '该邮箱已被注册';
+                            _this.emailMsg = 'The email address has been registered.';
                         } else {
                             // 将注册信息写入用户表
                             this.axios.post("/api/register", {

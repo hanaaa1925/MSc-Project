@@ -46,11 +46,11 @@
             loginSubmit() {
                 let regEmail = /^[A-Za-z0-9]+([-_.][A-Za-z0-9]+)*@([A-Za-z0-9]+[-.])+[A-Za-z]{2,5}$/;
                 if (this.loginForm.username === '') {
-                    this.unameMsg = '请输入username';
+                    this.unameMsg = 'Please input username';
                     this.pwdMsg = '';
                 } else if (this.loginForm.password === '') {
                     this.unameMsg = '';
-                    this.pwdMsg = '请输入密码';
+                    this.pwdMsg = 'Please input password';
                 } else {
                     this.unameMsg = '';
                     this.pwdMsg = '';
@@ -66,8 +66,8 @@
                             $(".animenu ul li a").removeClass("current");
                             _this.$router.push('/Home');
                         } else {
-                            _this.unameMsg = '帐号或密码错误';
-                            _this.pwdMsg = '帐号或密码错误';
+                            _this.unameMsg = 'The account or password is incorrect';
+                            _this.pwdMsg = 'The account or password is incorrect';
                         }
                     });
                 }
