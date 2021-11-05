@@ -12,12 +12,26 @@ const state = {
 const mutations = {
 
     // 将当前登录用户的数据保存在localStorage
-    SET_TOKEN(state, token) {
-        localStorage.setItem('token', JSON.stringify(token));
-        state.token = token;
+    SET_TOKEN(state, data) {
+        state.token = data;
+        window.sessionStorage.setItem('token', data)
     },
+    //获取用户名
+    GET_USER: (state, data) => {
+        // 把用户名存起来
+        state.username = data
+        window.sessionStorage.setItem('username', data)
+    },
+    //登出
+    LOGOUT: (state) => {
+        // 登出的时候要清除token
+        state.token = null
+        state.username = null
+        window.sessionStorage.removeItem('token')
+        window.sessionStorage.removeItem('username')
+    }
 
-};
+},
 
 const actions = {
     GET_SLIDELIST({commit}) {

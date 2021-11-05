@@ -1,0 +1,131 @@
+.search-bar {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.search-input {
+  display: none;
+  width: 100%;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 110px 0 15px;
+  background-color: #a6a385;
+  color: #fff;
+}
+
+.search-bar input[type="search"]::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.search-bar input[type="search"]::-moz-placeholder {
+  color: #fff;
+}
+
+.search-bar input[type="search"]:-moz-placeholder {
+  color: #fff;
+}
+
+.search-bar input[type="search"]:-ms-input-placeholder {
+  color: #fff;
+}
+
+.search-bar input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.btn-search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 38px;
+  background-color: transparent;
+  transition: all .3s;
+}
+
+.btn-hexagon-search, .btn-hexagon-user {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 38px;
+  line-height: 35px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.btn-hexagon-search {
+  background-color: #e3ce07;
+}
+
+.btn-hexagon-search:before, .btn-hexagon-user:before {
+  position: absolute;
+  top: 0;
+  left: -22px;
+  content: "";
+  width: 0;
+  height: 0;
+}
+
+.btn-hexagon-search:after, .btn-hexagon-user:after {
+  position: absolute;
+  top: 0;
+  right: -22px;
+  content: "";
+  width: 0;
+  height: 0;
+}
+
+.btn-hexagon-search:before {
+  border-top: 19px solid transparent;
+  border-right: 11px solid #e3ce07;
+  border-bottom: 19px solid transparent;
+  border-left: 11px solid transparent;
+}
+
+.btn-hexagon-search:after {
+  border-top: 19px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 19px solid transparent;
+  border-left: 11px solid #e3ce07;
+}
+
+@media screen and (max-width: 640px) {
+  .btn-search {
+      right: 15px;
+  }
+}
+
+.search-close {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 5px;
+  background-color: transparent;
+}
+
+.search-close span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.search-close span:nth-child(1) {
+  position: relative;
+  top: 1px;
+  transform: rotate(45deg);
+}
+
+.search-close span:nth-child(2) {
+  position: relative;
+  bottom: 1px;
+  transform: rotate(-45deg);
+}

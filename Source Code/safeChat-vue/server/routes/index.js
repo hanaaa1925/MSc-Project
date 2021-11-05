@@ -55,4 +55,18 @@ router.post('/register', (req, res) => {
     });
 });
 
+// 添加注册用户记录api
+router.post('/postContent', (req, res) => {
+    let {username, content, time} = req.body;
+    const sqlStr = `insert into content (username, content, time) 
+    values(''${username}','${content}','${time}')`;
+    connection.query(sqlStr, (err, data) => {
+        if (err) {
+            throw err;
+        } else {
+            res.send(data);
+        }
+    });
+});
+
 module.exports = router;
