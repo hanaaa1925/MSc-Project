@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "element-ui": "^2.15.6",
-    "hbl-comment": "^1.2.3",
-    "jquery": "^3.6.0",
-    "js-md5": "^0.7.3",
-    "wangeditor": "^4.7.9"
-  }
-}
