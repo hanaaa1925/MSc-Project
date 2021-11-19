@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const middleware = require('../middlewares');
+const {PythonShell} = require('python-shell');
 
 router.get('/', function(req, res) {
     return req.db.from('tweets')
@@ -41,8 +42,30 @@ router.get('/open', function(req, res) {
         })
 });
 
+router.post('/check', function(req, res) {
+    const { content } = req.body;
+    let options = {
+        mode: 'text',
+        pythonPath: '/Users/yhl125/opt/anaconda3/envs/python3/bin/python',
+        pythonOptions: ['-u'], // get print results in real-time
+        scriptPath: 'python',
+        args: content
+    };
+    PythonShell.run('ner.py', options, function (err, results) {
+        if (err) throw err;
+        // results is an array consisting of messages collected during execution
+        if (!results) {
+            message = "Safe!"
+        } else {
+            message = results
+        }
+        console.log('results: %j', results);
+        return res.send({ message })
+    })
+})
+
 router.post('/', middleware.authorize, function(req, res) {
-    const { content, is_anonymous, is_encryption } = req.body;
+    const { content, is_anonymous, is_encryption } = req.body
 
     return req.db.insert({ content, is_anonymous, is_encryption, user_id: req.decoded.user.id }, 'id')
         .into('tweets').then(() => {

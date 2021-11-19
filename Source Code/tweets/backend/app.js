@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const tweetsRouter = require('./routes/posts');
 const commentsRouter = require('./routes/comments')
 
+
 const cors = require('cors');
 knex.on('query', console.log)
 var app = express();
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/api/users', usersRouter);
 app.use('/api/tweets', tweetsRouter);
