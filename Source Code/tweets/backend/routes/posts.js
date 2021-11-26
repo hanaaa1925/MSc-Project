@@ -59,7 +59,7 @@ router.post('/check', function(req, res) {
         } else {
             message = results
         }
-        console.log('results: %j', results);
+        console.error('results: \n', results);
         return res.send({ message })
     })
 })
