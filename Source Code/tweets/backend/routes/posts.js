@@ -15,6 +15,7 @@ router.get('/', function(req, res) {
     })
 });
 
+
 router.get('/company/:company', function(req, res) {
     // console.log(user_company)
     const builder = req.db.from('tweets')
@@ -95,6 +96,28 @@ router.put('/like/:id', middleware.authorize, async function(req, res) {
     }
 });
 
+router.put('/fav/:id', middleware.authorize, async function(req, res) {
+    const { id } = req.params;
+    const user_id = req.decoded.user.id;
+    let fav = await req.db.from('favourites').whereRaw(`user_id = ${user_id} AND tweet_id = ${id}`)
+
+    if (fav[0]) {
+        await req.db.from('tweets').whereRaw(`id = ${id}`)
+            .update({
+                'favourites': req.db.raw('favourites - 1')
+            });
+        await req.db.delete({ user_id, tweet_id: Number(id) }, 'id').from('favourites')
+        return res.status(200).json({ "message": "Cancel favourite" })
+    } else {
+        await req.db.from('tweets').whereRaw(`id = ${id}`)
+            .update({
+                'favourites': req.db.raw('favourites + 1')
+            });
+        await req.db.insert({ user_id, tweet_id: Number(id) }, 'id').into('favourites')
+        return res.status(200).json({ "message": "favourite" })
+    }
+});
+
 router.get('/:id', middleware.authorize, function(req, res) {
     const builder = req.db.from('tweets').join('users', 'users.id', '=', 'tweets.user_id').where('tweets.user_id', req.decoded.user.id)
     builder.select('*', 'tweets.id as id')
@@ -106,7 +129,7 @@ router.get('/:id', middleware.authorize, function(req, res) {
         })
 });
 
-router.get('/search/:key',  function(req, res) {
+router.get('/search/:key', function(req, res) {
     const builder = req.db.from('tweets').join('users', 'users.id', '=', 'tweets.user_id')
     .where('tweets.content', 'like',`%${req.params.key}%`)
     builder.select('*', 'tweets.id as id')

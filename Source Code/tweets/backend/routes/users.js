@@ -208,7 +208,7 @@ router.put('/profile', middleware.authorize, function(req, res) {
   const builder = req.db.from('users').where('id', req.decoded.user.id);
 
   if (email)
-    builder.update('email', email)
+  builder.update('email', email)
   if (full_name)
     builder.update('full_name', full_name)
   if (company)
@@ -219,8 +219,7 @@ router.put('/profile', middleware.authorize, function(req, res) {
     const saltRounds = 10;
     const hash = bcrypt.hashSync(password, saltRounds)
     builder.update('password', hash)
-  }
-
+  } 
 
   builder.then(() => {
     let _b = req.db.from('users');
