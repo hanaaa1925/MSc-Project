@@ -32,8 +32,11 @@ def text_process(text):
     return token
 
 
+abs_file = os.path.abspath(__file__)
+abs_dir = abs_file[:abs_file.rfind('\\')] if os.name == 'nt' else abs_file[:abs_file.rfind(r'/')]	
+dataset = os.path.join(abs_dir, 'dataset2.xlsx')
 
-data = pd.read_excel('/Users/yhl125/Documents/uofglasgow/MSc Project/MSc Project/Source Code/tweets/backend/python/dataset.xlsx')
+data = pd.read_excel(dataset)
 data['content'] = data['content'].str.lower()
 data['content'] = data['content'].apply(lambda string: ' '.join([word for word in string.split(' ') if not word.rstrip(' ').startswith('@')]))
 data['content'] = data['content'].apply(lambda string: ' '.join([word for word in string.split(' ') if not word.rstrip(' ').startswith('#')]))
@@ -42,7 +45,7 @@ data['content'] = data['content'].apply(lambda string: ' '.join([word for word i
 data['content'] = data['content'].apply(text_process)
 X = data['content']
 y = data['label']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 136)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 118)
 
 train = pd.concat([X_train, y_train], axis=1)
 test = pd.concat([X_test, y_test], axis=1)
@@ -96,17 +99,9 @@ print("accuracy:{:.3f}%, precision:{:.3f}%, recall:{:.3f}%".format(acc1*100, pre
 print("accuracy:{:.3f}%, precision:{:.3f}%, recall:{:.3f}%".format(acc2*100, pre2*100, rec2*100))
 
 
-abs_file = os.path.abspath(__file__)	# 获取model.py文件的绝对路径
-# 找到绝对路径的同级目录
-abs_dir = abs_file[:abs_file.rfind('\\')] if os.name == 'nt' else abs_file[:abs_file.rfind(r'/')]	
-# 构造模型文件的绝对路径
 model_dir = os.path.join(abs_dir, 'train_model.m')
 cv_dir = os.path.join(abs_dir, 'cv.f')
 tfidf_dir = os.path.join(abs_dir, 'tfidf.f')
-
-print(model_dir)
-print(cv_dir)
-print(tfidf_dir)
 
 joblib.dump(model, model_dir, 1)
 joblib.dump(cv, open(cv_dir, 'wb'))

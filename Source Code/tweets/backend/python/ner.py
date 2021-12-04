@@ -8,6 +8,7 @@ import sys
 import stanza
 import joblib
 import pandas as pd
+import os
 
 def text_process(text):
     tokenizer = RegexpTokenizer('[a-z0-9]+')
@@ -18,10 +19,15 @@ def text_process(text):
     token = [lemmatizer.lemmatize(w) for w in token if lemmatizer.lemmatize(w) not in stop_words]
     return token
 
+abs_file = os.path.abspath(__file__)
+abs_dir = abs_file[:abs_file.rfind('\\')] if os.name == 'nt' else abs_file[:abs_file.rfind(r'/')]	
+train_model = os.path.join(abs_dir, 'train_model.m')
+train_cv = os.path.join(abs_dir, 'cv.f')
+train_test = os.path.join(abs_dir, 'tfidf.f')
 
-model = joblib.load("/Users/yhl125/Documents/uofglasgow/MSc Project/MSc Project/Source Code/tweets/backend/python/train_model.m")
-cv_test = joblib.load("/Users/yhl125/Documents/uofglasgow/MSc Project/MSc Project/Source Code/tweets/backend/python/cv.f")
-tfidf_test = joblib.load("/Users/yhl125/Documents/uofglasgow/MSc Project/MSc Project/Source Code/tweets/backend/python/tfidf.f")
+model = joblib.load(train_model)
+cv_test = joblib.load(train_cv)
+tfidf_test = joblib.load(train_test)
 
 # stanza.download('en')
 nlp = stanza.Pipeline(lang='en', processors='tokenize,ner')
