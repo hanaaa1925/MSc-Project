@@ -42,6 +42,7 @@ router.get('/', middleware.authorize, function(req, res) {
   })
 });
 
+
 router.post('/logout', (req, res) => {
   res.clearCookie('token').end();
 });
@@ -148,6 +149,26 @@ router.get('/profile', middleware.authorize, function(req, res) {
       res.status(500).json({ "Error": true, "message": "Error in MySQL query" })
     })
 
+})
+
+router.get('/company', middleware.authorize, function(req, res) {
+  const builder = req.db.from('users');
+  builder.select('company');
+
+  builder.where('id', '=', req.decoded.user.id)
+    .then((rows) => {
+      if (rows.length == 0) {
+        return res.status(401).json({
+          "error": true,
+          "message": "User not found"
+        })
+      }
+      res.json(rows[0]);
+    }).catch(err => {
+      console.log(err);
+      res.status(500).json({ "Error": true, "message": "Error in MySQL query" })
+    })
+  
 })
 
 

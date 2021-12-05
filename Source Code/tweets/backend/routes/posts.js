@@ -3,6 +3,22 @@ const router = express.Router();
 const middleware = require('../middlewares');
 const {PythonShell} = require('python-shell');
 
+router.get('/test', function(req, res) {
+    
+    return req.db.from('tweets')
+    .join('users', 'users.id', '=', 'tweets.user_id')
+    .select('tweets.*', 'users.avatar', 'users.username')
+    .whereRaw(`users.company <> "q"`)
+    .orderBy('created_at', 'desc').then((tweets) => {
+        return res.status(200).json(tweets)
+    }).catch(err => {
+        console.log(err)
+        res.status(500).json({ "Error": true, "message": "Error in MySQL query" })
+    })
+    
+});
+
+
 router.get('/', function(req, res) {
     return req.db.from('tweets')
     .join('users', 'users.id', '=', 'tweets.user_id')
@@ -16,12 +32,14 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/company/:company', function(req, res) {
-    // console.log(user_company)
-    const builder = req.db.from('tweets')
+router.get('/company/:company', middleware.authorize, function(req, res) {
+    const { company } = req.params;
+    console.log("company:" + company)
+    return req.db.from('tweets')
     .join('users', 'users.id', '=', 'tweets.user_id')
-    .where('user.company', '!=',`%${req.params.company}%`)
-    builder.select('tweets.*', 'users.avatar', 'users.username')
+    .select('tweets.*', 'users.avatar', 'users.username')
+    .where("(", "tweets.is_encryption", "=", "0", ")", 
+    "AND", "(", "tweets.is_encryption", "=", "1", "and", "user.company", "!=", company, ")")
     .orderBy('created_at', 'desc').then((tweets) => {
         return res.status(200).json(tweets)
     }).catch(err => {
