@@ -1,7 +1,7 @@
 1. Install MySQL: https://www.mysql.com/downloads/
 
 
-2. Use VSCode open "tweets"
+2. Use VSCode open "SafeTweet"
 
 
 3. Open VSCode terminal:
