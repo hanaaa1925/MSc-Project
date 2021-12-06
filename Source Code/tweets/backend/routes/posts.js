@@ -32,14 +32,14 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/company/:company', middleware.authorize, function(req, res) {
+router.put('/company/:company', middleware.authorize, async function(req, res) {
     const { company } = req.params;
-    console.log("company:" + company)
+    const user_company = req.decoded.user.company;
+
     return req.db.from('tweets')
     .join('users', 'users.id', '=', 'tweets.user_id')
     .select('tweets.*', 'users.avatar', 'users.username')
-    .where("(", "tweets.is_encryption", "=", "0", ")", 
-    "AND", "(", "tweets.is_encryption", "=", "1", "and", "user.company", "!=", company, ")")
+    .whereRaw(`users.company <> ${company}`)
     .orderBy('created_at', 'desc').then((tweets) => {
         return res.status(200).json(tweets)
     }).catch(err => {
