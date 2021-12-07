@@ -1,49 +1,70 @@
-1. Install MySQL: https://www.mysql.com/downloads/
-
-
-2. Use VSCode open "SafeTweet"
-
-
-3. Open VSCode terminal:
+## 1. Download
+Install MySQL: https://www.mysql.com/downloads/
+<br></br>
+Install Node.js: https://nodejs.org/en/
+<br></br>
+Install Python: https://www.python.org/getit/
+<br></br>
+## 2. Database
+Open terminal, create database:
 ```
-cd frontend
-npm install
+mysql -u root -p
+CREATE DATABSE safetweets;
 ```
-
-```
-cd backend
-npm install
-```
-
-
-4. Open file: tweets/backend/knexfile.js
-
-
-5. Modify the configure to fit your MySQL
-
-
-6. Initializing the database
+Use VSCode open "SafeTweet"
+<br></br>
+Open file: `SafeTweet/backend/knexfile.js`, modify the configure to fit your MySQL.
+<br></br>
+Open VSCode terminal, create tables:
 ```
 cd backend
 npm knex migrate:latest
 ```
-
-
-7. Start backend
+<br></br>
+## 3. Install packages
+VSCode terminal:
+<br></br>
+Front-end:
+```
+cd frontend
+npm install
+```
+Back-end:
 ```
 cd backend
-npm start
+npm install
+pip install -U scikit-learn scipy matplotlib (About 260M)
+pip install stanza
+pip install joblib
 ```
-
-
-8. Start frontend
+<br></br>
+Open and run file: `SafeTweet/backend/python/ner.py`, to install the stanza English dictionary (About 480M)
+<br></br>
+After downloading dictionary, comment
+```
+# stanza.download('en ')
+```
+The dictionary only needs to be downloaded once.
+<br></br>
+## 4. Start server
+VSCode terminal:
+<br></br>
+Front-end:
 ```
 cd frontend
 npm run server
 ```
-
-
-9. Open browser, input URL: https://localhost:8080
-
+Back-end:
+```
+cd backend
+npm start
+```
+<br></br>
+## 5. Use SafeTweet
+Open browser
+<br></br>
+URL: https://localhost:8080
+<br></br>
+Please enjoy it.
 
 
