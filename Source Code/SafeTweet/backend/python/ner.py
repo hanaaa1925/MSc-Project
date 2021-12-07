@@ -33,6 +33,8 @@ tfidf_test = joblib.load(train_test)
 nlp = stanza.Pipeline(lang='en', processors='tokenize,ner')
 
 text = sys.argv[1]
+#text = "Happy Christams Alice!"
+# text = "good"
 if text == '':
     print("Empty!")
 else:
@@ -50,6 +52,8 @@ else:
     text_tfidf_matrix = tfidf_test.fit_transform(text_count)
                     
     pre = model.predict(text_tfidf_matrix)
+    #if pre ==1:
+    #    print("You have sensitive message, please anonymous.\n")
     doc = nlp(text)
     # print(doc.ents)
     if pre ==1 and doc.ents == []:

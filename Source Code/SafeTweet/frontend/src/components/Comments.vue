@@ -53,21 +53,10 @@
       </emoji-picker>
       <div
         class="emoji-invoker"
-        @click="privicy = !privicy"
+        @click="privacy = !privacy"
       >
-        <b-icon
-          v-if="!privicy"
-          icon="eye"
-        ></b-icon>
-      </div>
-      <div
-        class="emoji-invoker"
-        @click="privicy = !privicy"
-      >
-        <b-icon
-          v-if="privicy"
-          icon="eye-slash"
-        ></b-icon>
+        <img v-if="privacy" src="../assets/anonymous.png" alt="" title="Already Anonymous">
+        <img v-if="!privacy" src="../assets/non-anonymous.png" alt=""  title="No Anonymous">
       </div>
     </div>
     <div class="w-100 d-flex justify-content-end">
@@ -94,7 +83,7 @@ export default {
     return {
       input: '',
       search: '',
-      privicy: false
+      privacy: false
     }
   },
   methods: {

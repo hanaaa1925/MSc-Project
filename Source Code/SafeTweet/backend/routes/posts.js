@@ -65,7 +65,7 @@ router.post('/check', function(req, res) {
     const { content } = req.body;
     let options = {
         mode: 'text',
-        pythonPath: '/Users/yhl125/opt/anaconda3/envs/python3/bin/python',
+        pythonPath: '/usr/local/bin/python3.7',
         pythonOptions: ['-u'], // get print results in real-time
         scriptPath: 'python',
         args: content
