@@ -10,9 +10,8 @@
 3. index (To quick memory)   
           
 ### Source Code:  
-1. Crawler code for Maimai (python)  
-2. Avoid copy (html)  
-3. Watermarks (javascript) 
+1. SafeTweet
+2. Unit test
 
 ### Charts:  
 1. Prototype of webpage  
@@ -22,6 +21,7 @@
 5. NER tool
 
 ### Thesis Report  
+1. First Draft(Keep updating)
 
          
 
