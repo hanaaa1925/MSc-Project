@@ -48,3 +48,8 @@ AHP & Likert Scale:
 4. Evaluating Usability of Academic Websites through a Fuzzy Analytical Hierarchical Process
    https://www.mdpi.com/2071-1050/13/4/2040/htm
    
+   
+   
+SUS:
+1. Usability testing of a healthcare chatbot: Can we use conventional methods to assess conversational user interfaces?
+   https://dl.acm.org/doi/fullHtml/10.1145/3335082.3335094
