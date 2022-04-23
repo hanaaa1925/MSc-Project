@@ -53,3 +53,21 @@ AHP & Likert Scale:
 SUS:
 1. Usability testing of a healthcare chatbot: Can we use conventional methods to assess conversational user interfaces?
    https://dl.acm.org/doi/fullHtml/10.1145/3335082.3335094
+   
+   
+Influcing factors:
+1. Understanding of website usability: Specifying and measuring constructs and their relationships
+   https://www.sciencedirect.com/science/article/pii/S0167923611001679?casa_token=aM-kRJWHF6AAAAAA:PUVqeN07GbPnoyqAZgx26YIKG23qLLtgcUT01ypCo_lEpRpeiztr3usaIog2ZUAYWNnmEd8
+   
+2. Aggregated Indices in Website Quality Assessment
+   https://www.mdpi.com/1999-5903/12/4/72/htm
+   
+3. Web usability test in 60 seconds: a theoretical foundation and empirical test
+   https://www.researchgate.net/profile/Imran-Mahmud-4/publication/336057745_Web_usability_test_in_60_seconds_a_theoretical_foundation_and_empirical_test/links/5d8c6421a6fdcc25549a57a4/Web-usability-test-in-60-seconds-a-theoretical-foundation-and-empirical-test.pdf
+   
+4. Attributes of Web Site Usability: A Study of Web Users with the Repertory Grid Technique
+   https://www.tandfonline.com/doi/pdf/10.2753/JEC1086-4415130405?needAccess=true
+   
+5. Turning Visitors into Customers: A Usability-Centric Perspective on Purchase Behavior in Electronic Channels
+   https://pubsonline.informs.org/doi/abs/10.1287/mnsc.1050.0442?casa_token=JByq0uonoRAAAAAA:W7Z_LJIwY9hLXvUqO1Zbow21YasDasIAepQO5DAPlGBxb_blB7dH2THCBKWa73dQookUpNnb
+
