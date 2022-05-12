@@ -103,7 +103,7 @@ export default {
       }
       axios.post('http://localhost:5050/api/comments/', {
         content: this.input,
-        is_anonymous: this.privicy,
+        is_anonymous: this.privacy,
         tweet_id: this.tweet_id
       }, {
         headers: {

@@ -3,8 +3,8 @@ const setWatermark = (str1, str2) => {
   const id = 1
   const can = document.createElement('canvas')
   // 设置画布的长宽
-  can.width = 150
-  can.height = 100
+  can.width = 180
+  can.height = 150
 
   const cans = can.getContext('2d')
   cans.rotate((-20 * Math.PI) / 180) // rotate angle

@@ -41,16 +41,16 @@ export default {
 
 <style>
 .contentWrapper {
-  margin-top: 200px;
+  margin-top: 250px;
 }
 .content {
   z-index: 100000;
   font: 36px Times;
   text-align: center;
-  top: 100px;
+  top: 150px;
 }
 .back {
-  margin-top: 260px;
+  margin-top: 200px;
   margin-left: 380px;
 }
 </style>
