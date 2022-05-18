@@ -30,8 +30,25 @@ for col in range(14):
 plt.plot(ave_data, 'r*-', alpha=0.5, linewidth=2, label='average time')
 plt.legend()
 
-# Questionnaire Part 1 - SUS
 # 2
+total_time = pd.read_excel("./Test duration.xlsx", sheet_name='Sheet3')
+
+plt.figure(dpi=150, figsize=(5, 3))
+plt.title("Total Time for Each Participant")
+
+yticks = np.arange(0, 480, 50)
+plt.yticks(yticks)
+xticks = np.arange(1, 31, 2)
+plt.xticks(xticks)
+
+plt.xlabel('Participants')
+plt.ylabel('Time')
+plt.axhline(273.067, color='r', linestyle='--', label='average time')
+plt.plot(total_time, 'b*-', alpha=0.5, linewidth=1, label='time')
+plt.legend()
+
+# Questionnaire Part 1 - SUS
+# 3
 sus = pd.read_excel("./Questionnaire_part1.xlsx", sheet_name='Sheet2')
 sus_mean = np.mean(sus)
 sus_std = np.std(sus, ddof=1)
@@ -49,7 +66,28 @@ plt.axhline(68, color='r', linestyle='--', label='average')
 plt.boxplot(sus, widths=0.5)
 plt.legend()
 
-# 3
+# 4
+sus_factor = ('Effectiveness&Learnability', 'Use Efficiency&Usability', 'Satisfaction')
+
+sus_sub = pd.read_excel("./Questionnaire_part1.xlsx", sheet_name='Sheet3')
+array_sus = np.array(sus_sub)
+sus_sub = array_sus.tolist()
+sus_sub = [s for [s] in sus_sub]
+
+
+plt.figure(dpi=150, figsize=(5, 2))
+plt.title("SUS Sub-scale")
+plt.xticks(fontsize=8)
+plt.ylim([0, 5])
+yticks = np.arange(0, 5.5, 0.5)
+plt.yticks(yticks)
+
+plt.bar(sus_factor, sus_sub, width=0.3, alpha=0.8)
+plt.axhline(3.15, color='r', alpha=0.5, linestyle='--', label='average')
+
+plt.legend()
+
+# 5
 plt.figure(dpi=150, figsize=(5, 3))
 plt.title("Each Score and SUS Standard Score")
 
@@ -65,8 +103,8 @@ plt.legend()
 
 
 # Questionnaire Part 2 - UEQ
-# 4
-ueq = pd.read_excel("../User experience test/Questionnaire_part2.xlsx", sheet_name='Sheet2')
+# 6
+ueq = pd.read_excel("./Questionnaire_part2.xlsx", sheet_name='Sheet2')
 ueq_mean = np.mean(ueq)
 ueq_std = np.std(ueq, ddof=1)
 
@@ -80,11 +118,11 @@ plt.title("SafeTweet UEQ Score")
 plt.ylabel("Score")
 plt.ylim([0, 6])
 plt.xticks([])
-plt.axhline(3.853741, color='r', linestyle='--', label='average')
+plt.axhline(3.839683, color='r', linestyle='--', label='average')
 plt.boxplot(ueq, widths=0.5)
 plt.legend()
 
-# 5
+# 7
 plt.figure(dpi=150, figsize=(5, 3))
 plt.title("Each Score and Average Score")
 
@@ -94,11 +132,11 @@ plt.xticks(xticks)
 
 plt.xlabel('Number of Participants')
 plt.ylabel('Score')
-plt.axhline(3.853741, color='r', linestyle='--', label='average')
+plt.axhline(3.839683, color='r', linestyle='--', label='average')
 plt.plot(ueq, 'b*-', alpha=0.5, linewidth=1, label='score')
 plt.legend()
 
-# 6
+# 8
 factors = ('content', 'usability', 'interactivity', 'visual', 'subjective feeling')
 ave_score = pd.read_excel("./Questionnaire_part2.xlsx", sheet_name='Sheet3')
 array = np.array(ave_score)
@@ -113,10 +151,10 @@ yticks = np.arange(0, 5.5, 0.5)
 plt.yticks(yticks)
 
 plt.bar(factors, ave_score, width=0.3, alpha=0.8)
-plt.axhline(3.853741, color='r', alpha=0.5, linestyle='--', label='average')
+plt.axhline(3.839683, color='r', alpha=0.5, linestyle='--', label='average')
 plt.legend()
 
-# 7
+# 9
 factors = ['content', 'usability', 'interactivity', 'visual','subjective feeling']
 rate = pd.read_excel("./Questionnaire_part2.xlsx", sheet_name='Sheet4')
 array = np.array(rate)
@@ -130,7 +168,8 @@ plt.pie(x_0, radius=0.25, colors='w')
 plt.title("Factor Weight")
 plt.show()
 
-# 8
+# Questionnaire Part 3 - Short Answer Question
+# 10
 f1 = open(u'./SAQ-1.csv', 'r', encoding='utf-8').read()
 stopwords = set(STOPWORDS)
 wordcloud1 = WordCloud(
@@ -146,7 +185,7 @@ plt.imshow(wordcloud1)
 plt.axis("off")
 plt.show()
 
-# 9
+# 11
 f2 = open(u'./SAQ-2.1.csv', 'r', encoding='utf-8').read()
 wordcloud2 = WordCloud(
         background_color="white",
@@ -161,7 +200,7 @@ plt.imshow(wordcloud2)
 plt.axis("off")
 plt.show()
 
-# 10
+# 12
 f3 = open(u'./SAQ-2.2.csv', 'r', encoding='utf-8').read()
 wordcloud3 = WordCloud(
         background_color="white",
