@@ -170,50 +170,31 @@ plt.show()
 
 # Questionnaire Part 3 - Short Answer Question
 # 10
-f1 = open(u'./SAQ-1.csv', 'r', encoding='utf-8').read()
-stopwords = set(STOPWORDS)
-wordcloud1 = WordCloud(
-        background_color="white",
-        width=1500,
-        height=960,
-        margin=10,
-        stopwords=stopwords
-        ).generate(f1)
+attitude = ['positive', 'reserved consent', 'neutral', 'negative']
+attitude_rate = [0.2333, 0.5333, 0.2, 0.0333]
+
+x_0 = [1, 0, 0, 0]
+
 plt.figure(dpi=150, figsize=(3, 3))
-plt.title("Overall Views")
-plt.imshow(wordcloud1)
-plt.axis("off")
+plt.pie(attitude_rate, labels=attitude, autopct='%1.1f%%')
+plt.pie(x_0, radius=0.25, colors='w')
+plt.title("User Overall Feeling")
+
 plt.show()
 
 # 11
-f2 = open(u'./SAQ-2.1.csv', 'r', encoding='utf-8').read()
-wordcloud2 = WordCloud(
-        background_color="white",
-        width=1500,
-        height=960,
-        margin=10,
-        stopwords=stopwords
-        ).generate(f2)
-plt.figure(dpi=150, figsize=(3, 3))
-plt.title("Positive Point")
-plt.imshow(wordcloud2)
-plt.axis("off")
+state = ('Did not notice', 'Noticed and accepted', 'Noticed but cannot accept')
+state_rate = [30, 36.7, 33.3]
+
+plt.figure(dpi=150, figsize=(6, 3))
+plt.title("Impact of detection result delay on users")
+plt.ylabel("%")
+
+plt.bar(state, state_rate, width=0.3, alpha=0.8)
+
 plt.show()
 
-# 12
-f3 = open(u'./SAQ-2.2.csv', 'r', encoding='utf-8').read()
-wordcloud3 = WordCloud(
-        background_color="white",
-        width=1500,
-        height=960,
-        margin=10,
-        stopwords=stopwords
-        ).generate(f2)
-plt.figure(dpi=150, figsize=(3, 3))
-plt.title("Negative Point")
-plt.imshow(wordcloud3)
-plt.axis("off")
-plt.show()
+
 
 
 
